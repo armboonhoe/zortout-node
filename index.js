@@ -148,7 +148,7 @@ async function fetchOrderData() {
   }
 }
 
-cron.schedule("*/10 * * * *", () => {
+cron.schedule("*/1 * * * *", () => {
   console.log("Running the cron job every 10 minutes...");
   fetchOrderData()
     .then(() => Logger.info("Data fetched and processed."))
