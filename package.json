@@ -12,7 +12,10 @@
   "dependencies": {
     "axios": "^1.7.6",
     "dotenv": "^16.4.5",
+    "express": "^4.21.0",
     "js-logger": "^1.6.1",
-    "node-cron": "^3.0.3"
+    "mongoose": "^8.6.2",
+    "node-cron": "^3.0.3",
+    "winston": "^3.14.2"
   }
 }
