@@ -155,4 +155,4 @@ cron.schedule("*/1 * * * *", () => {
     .catch((error) => console.log("Error during data fetching:", error));
 });
 
-console.log("Cron job has been set up.");
+console.log("Cron job has been set up.555");
