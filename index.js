@@ -1,7 +1,11 @@
 const cron = require("node-cron");
 const axios = require("axios");
 const fs = require("fs");
+const express = require("express");
 require("dotenv").config();
+
+const app = express();
+const port = process.env.PORT || 3000;
 
 async function getAccessToken() {
   const url = "https://login.bentoweb.com/oauth/token";
@@ -57,8 +61,7 @@ async function fetchOrderData() {
 
             try {
               const parsedData = JSON.parse(data);
-              // Example: Check if a specific order ID exists in the storage array
-              const orderIdToCheck = order.order_id.toString(); // Change this to the ID you want to check
+              const orderIdToCheck = order.order_id.toString();
               const exists = parsedData.storage.some(
                 (item) => item === orderIdToCheck
               );
@@ -112,7 +115,7 @@ async function fetchOrderData() {
                           }
                         ),
                       };
-                      // console.log(zortoutPayload);
+
                       const zortoutResponse = await axios.post(
                         zortoutUrl,
                         zortoutPayload,
@@ -122,9 +125,9 @@ async function fetchOrderData() {
                             "Content-Type": "application/json",
                             storename: "gucut@icloud.com",
                             apikey:
-                              process.env.API_KEY,
+                              "fvqzSTdF/xQtlfaBHKI4g8zSvLIAaG82GGWNwsNsO/w=",
                             apisecret:
-                            process.env.API_SECRET,
+                              "3AHTMk9SdSuhG5f0WJW3aJToYvqunLPTR9rY4vkhDw=",
                           },
                         }
                       );
@@ -149,10 +152,16 @@ async function fetchOrderData() {
 }
 
 cron.schedule("*/1 * * * *", () => {
-  console.log("Running the cron job every 10 minutes...");
+  console.log("Running the cron job every minute...");
   fetchOrderData()
     .then(() => console.log("Data fetched and processed."))
     .catch((error) => console.log("Error during data fetching:", error));
 });
 
-console.log("Cron job has been set up.555");
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
