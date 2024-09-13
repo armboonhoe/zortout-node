@@ -7,7 +7,9 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3030;
 
+console.log("not yet connect");
 connectDB();
+console.log("connect already");
 
 cron.schedule("*/1 * * * *", () => {
   console.log("Running the cron job every minute...");
