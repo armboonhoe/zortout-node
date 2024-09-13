@@ -5,7 +5,7 @@ const express = require("express");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3030;
 
 async function getAccessToken() {
   const url = "https://login.bentoweb.com/oauth/token";
@@ -125,9 +125,9 @@ async function fetchOrderData() {
                             "Content-Type": "application/json",
                             storename: "gucut@icloud.com",
                             apikey:
-                              "fvqzSTdF/xQtlfaBHKI4g8zSvLIAaG82GGWNwsNsO/w=",
+                              process.env.API_KEY,
                             apisecret:
-                              "3AHTMk9SdSuhG5f0WJW3aJToYvqunLPTR9rY4vkhDw=",
+                            process.env.API_SECRET,
                           },
                         }
                       );
