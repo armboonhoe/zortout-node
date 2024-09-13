@@ -151,9 +151,8 @@ async function fetchOrderData() {
 cron.schedule("*/1 * * * *", () => {
   console.log("Running the cron job every 10 minutes...");
   fetchOrderData()
-    .then(() => Logger.info("Data fetched and processed."))
-    .catch((error) => Logger.error("Error during data fetching:", error));
+    .then(() => console.log("Data fetched and processed."))
+    .catch((error) => console.log("Error during data fetching:", error));
 });
 
 console.log("Cron job has been set up.");
-Logger.info("Cron job has been set up.");
