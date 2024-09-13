@@ -1,15 +1,16 @@
 const cron = require("node-cron");
 const axios = require("axios");
 const fs = require("fs");
+require("dotenv").config();
 
 async function getAccessToken() {
   const url = "https://login.bentoweb.com/oauth/token";
   const payload = new URLSearchParams({
     grant_type: "password",
-    client_id: "98",
-    client_secret: "UuZFKI9feDFjltRTT99W1FjE7W81avoFzQMJL/BLlg8=",
-    username: "gucut1@gmail.com",
-    password: "aA151225",
+    client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET,
+    username: process.env.USERNAME,
+    password: process.env.PASSWORD,
   });
 
   try {
