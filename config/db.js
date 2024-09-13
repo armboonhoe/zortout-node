@@ -9,8 +9,8 @@ const connectDB = async () => {
     await mongoose.connect(
       "mongodb+srv://bensnafkc:BdGmIJn8kULMoIwR@cluster0.qirfi.mongodb.net/storage",
       {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+        // useNewUrlParser: true,
+        // useUnifiedTopology: true,
       }
     );
     console.log("Connected to MongoDB");
